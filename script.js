@@ -1,16 +1,16 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // 픽셀 트레일 효과 초기화
-  initPixelTrail({
-    gridSize: 30,
-    trailSize: 0.15,
-    maxAge: 200,
-    interpolate: 8,
-    color: '#777777',
-    gooeyFilter: {
-      id: 'portfolio-goo-filter',
-      strength: 8
-    }
-  });
+  // 픽셀 트레일 효과 비활성화
+  // initPixelTrail({
+  //   gridSize: 30,
+  //   trailSize: 0.15,
+  //   maxAge: 200,
+  //   interpolate: 8,
+  //   color: '#777777',
+  //   gooeyFilter: {
+  //     id: 'portfolio-goo-filter',
+  //     strength: 8
+  //   }
+  // });
 
   // Register GSAP plugins
   gsap.registerPlugin(CustomEase);
@@ -649,6 +649,12 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       }
     }
+  });
+
+  // 뒤로가기 버튼 처리 (브라우저 뒤로가기 버튼)
+  window.addEventListener('popstate', (event) => {
+    // 뒤로가기 시 Start 페이지로 이동
+    window.location.href = 'index.html';
   });
 
   // Clean up any lingering animations when user tabs away

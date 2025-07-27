@@ -13,7 +13,7 @@ body {
 
 body {
   font-family: "PP Neue Montreal", sans-serif;
-  background-color: #f5f3ee;
+  background-color: #ffffff;
   color: #000;
 }
 
@@ -74,7 +74,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #f5f3ee;
+  background-color: #ffffff;
   z-index: 1000;
   transform: scaleY(0);
   transform-origin: bottom;

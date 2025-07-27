@@ -73,17 +73,13 @@ class PixelTrail {
   updateTrail() {
     const size = this.trailTexture.width;
     
-    // 정사각형 그리드에 맞게 마우스 위치 계산
-    const pixelSize = Math.min(window.innerWidth, window.innerHeight) / this.gridSize;
-    const offsetX = (window.innerWidth - this.gridSize * pixelSize) / 2;
-    const offsetY = (window.innerHeight - this.gridSize * pixelSize) / 2;
+    // 전체 화면을 덮는 그리드 계산
+    const pixelSizeX = window.innerWidth / this.gridSize;
+    const pixelSizeY = window.innerHeight / this.gridSize;
     
     // 마우스 위치를 그리드 좌표로 변환
-    const adjustedMouseX = this.mousePos.x - offsetX;
-    const adjustedMouseY = this.mousePos.y - offsetY;
-    
-    const gridX = Math.floor(adjustedMouseX / pixelSize);
-    const gridY = Math.floor(adjustedMouseY / pixelSize);
+    const gridX = Math.floor(this.mousePos.x / pixelSizeX);
+    const gridY = Math.floor(this.mousePos.y / pixelSizeY);
     
     if (gridX >= 0 && gridX < this.gridSize && gridY >= 0 && gridY < this.gridSize) {
       const index = gridY * this.gridSize + gridX;
@@ -104,12 +100,9 @@ class PixelTrail {
   render() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     
-    // 정사각형 픽셀을 위해 더 작은 크기 사용
-    const pixelSize = Math.min(this.canvas.width, this.canvas.height) / this.gridSize;
-    
-    // 캔버스 중앙에 그리드 배치
-    const offsetX = (this.canvas.width - this.gridSize * pixelSize) / 2;
-    const offsetY = (this.canvas.height - this.gridSize * pixelSize) / 2;
+    // 전체 화면을 덮는 그리드 계산
+    const pixelSizeX = this.canvas.width / this.gridSize;
+    const pixelSizeY = this.canvas.height / this.gridSize;
     
     this.ctx.fillStyle = this.color;
     
@@ -125,10 +118,10 @@ class PixelTrail {
           if (alpha > 0) {
             this.ctx.globalAlpha = alpha;
             this.ctx.fillRect(
-              offsetX + x * pixelSize,
-              offsetY + y * pixelSize,
-              pixelSize,
-              pixelSize
+              x * pixelSizeX,
+              y * pixelSizeY,
+              pixelSizeX,
+              pixelSizeY
             );
           }
         }

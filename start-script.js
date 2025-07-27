@@ -1,16 +1,16 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // 픽셀 트레일 효과 초기화
-  initPixelTrail({
-    gridSize: 40,
-    trailSize: 0.1,
-    maxAge: 250,
-    interpolate: 5,
-    color: '#777777',
-    gooeyFilter: {
-      id: 'start-goo-filter',
-      strength: 10
-    }
-  });
+  // 픽셀 트레일 효과 비활성화
+  // initPixelTrail({
+  //   gridSize: 40,
+  //   trailSize: 0.1,
+  //   maxAge: 250,
+  //   interpolate: 5,
+  //   color: '#777777',
+  //   gooeyFilter: {
+  //     id: 'start-goo-filter',
+  //     strength: 10
+  //   }
+  // });
 
   const startContainer = document.querySelector(".start-container");
   const textPressureTitle = document.querySelector(".text-pressure-title");

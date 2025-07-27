@@ -12,7 +12,7 @@ body {
 
 body {
   font-family: "PP Neue Montreal", sans-serif;
-  background-color: #f5f3ee;
+  background-color: #ffffff;
   color: #000;
   padding: 1rem;
 }
@@ -198,6 +198,30 @@ body {
   }
 }
 
+/* 뒤로가기 버튼 */
+.back-button {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  color: #000;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.back-button:hover {
+  transform: translateX(-3px);
+}
+
+.back-button svg {
+  transition: transform 0.3s ease;
+}
+
 @media (max-width: 768px) {
   .project-content {
     flex-direction: column;
@@ -221,5 +245,12 @@ body {
 
   .project-title {
     font-size: 2rem;
+  }
+  
+  .back-button {
+    top: 15px;
+    left: 15px;
+    width: 35px;
+    height: 35px;
   }
 } 
