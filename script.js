@@ -1,4 +1,17 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // 픽셀 트레일 효과 초기화
+  initPixelTrail({
+    gridSize: 30,
+    trailSize: 0.15,
+    maxAge: 200,
+    interpolate: 8,
+    color: '#777777',
+    gooeyFilter: {
+      id: 'portfolio-goo-filter',
+      strength: 8
+    }
+  });
+
   // Register GSAP plugins
   gsap.registerPlugin(CustomEase);
   

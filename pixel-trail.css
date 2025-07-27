@@ -1,0 +1,29 @@
+.goo-filter-container {
+  position: absolute;
+  overflow: hidden;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.pixel-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.pixel-canvas canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* 기존 컨텐츠가 트레일 효과 위에 보이도록 */
+.start-container,
+.projects-component {
+  position: relative;
+  z-index: 10;
+} 
