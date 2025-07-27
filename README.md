@@ -14,10 +14,10 @@
 
 ```
 portfolio/
-├── start.html          # 시작 페이지 (타이틀 이미지)
+├── index.html          # 시작 페이지 (DOKUN 텍스트)
 ├── start-styles.css    # 시작 페이지 CSS
 ├── start-script.js     # 시작 페이지 JavaScript
-├── index.html          # 메인 포트폴리오 HTML 파일
+├── portfolio.html      # 메인 포트폴리오 HTML 파일
 ├── styles.css          # 포트폴리오 CSS 스타일시트
 ├── script.js           # 포트폴리오 JavaScript 애니메이션
 ├── README.md           # 프로젝트 설명서
@@ -39,27 +39,30 @@ python -m http.server 8000
 npx http-server
 ```
 
-브라우저에서 `http://localhost:8000/start.html`로 접속하세요.
+브라우저에서 `http://localhost:8000/`로 접속하세요. (Start 페이지가 기본 페이지)
 
-### 2. 타이틀 이미지 설정
+### 2. DOKUN 텍스트 설정
 
-시작 페이지의 타이틀 이미지를 설정하려면 `start.html` 파일을 편집하세요:
+시작 페이지의 "DOKUN" 텍스트를 변경하려면 `index.html` 파일을 편집하세요:
 
 ```html
-<!-- 실제 타이틀 이미지를 사용하려면 아래 주석을 해제하고 이미지 경로를 설정하세요 -->
-<img src="path/to/your/title-image.jpg" alt="Portfolio Title">
-
-<!-- 임시 플레이스홀더는 주석 처리하세요 -->
-<!-- <div class="image-placeholder">
-    <div class="placeholder-text">TITLE IMAGE</div>
-</div> -->
+<h1 class="text-pressure-title" id="textPressureTitle">
+    <span data-char="Y">Y</span>
+    <span data-char="O">O</span>
+    <span data-char="U">U</span>
+    <span data-char="R">R</span>
+    <span data-char="T">T</span>
+    <span data-char="E">E</span>
+    <span data-char="X">X</span>
+    <span data-char="T">T</span>
+</h1>
 ```
 
-이미지 권장 크기: 400x300px (반응형으로 자동 조정됨)
+텍스트 압축 효과는 마우스 움직임에 따라 각 글자의 폰트 가중치와 너비가 동적으로 변화합니다.
 
 ### 3. 유튜브 비디오 변경
 
-각 프로젝트의 유튜브 비디오를 변경하려면 `index.html` 파일에서 iframe의 `src` 속성을 수정하세요:
+각 프로젝트의 유튜브 비디오를 변경하려면 `portfolio.html` 파일에서 iframe의 `src` 속성을 수정하세요:
 
 ```html
 <!-- 현재 예시 -->
@@ -88,7 +91,7 @@ npx http-server
 
 ### 4. 프로젝트 정보 수정
 
-각 프로젝트의 제목과 설명을 수정하려면 `index.html`에서 해당 부분을 편집하세요:
+각 프로젝트의 제목과 설명을 수정하려면 `portfolio.html`에서 해당 부분을 편집하세요:
 
 ```html
 <h2 class="project-title">YOUR PROJECT TITLE</h2>
@@ -107,9 +110,9 @@ npx http-server
 
 ### 5. 프로젝트 추가/제거
 
-현재 4개의 프로젝트가 활성화되어 있습니다. 새로운 프로젝트를 추가하려면:
+현재 5개의 프로젝트가 활성화되어 있습니다. 새로운 프로젝트를 추가하려면:
 
-1. `index.html`에서 새로운 프로젝트 아이템을 추가
+1. `portfolio.html`에서 새로운 프로젝트 아이템을 추가
 2. `data-index` 속성을 순차적으로 설정 (0, 1, 2, 3, 4, 5...)
 3. 유튜브 비디오 링크와 프로젝트 정보 설정
 
