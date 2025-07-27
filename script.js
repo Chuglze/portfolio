@@ -202,17 +202,17 @@ document.addEventListener("DOMContentLoaded", () => {
       let rotateX, translateZ, translateY;
       
       if (distance === 1) {
-        rotateX = isAbove ? 12 : -12; // Opposite directions
-        translateZ = -80;
-        translateY = isAbove ? -15 : 15;
+        rotateX = isAbove ? 18 : -18; // Opposite directions
+        translateZ = -120;
+        translateY = isAbove ? -25 : 25;
       } else if (distance === 2) {
-        rotateX = isAbove ? 20 : -20; // Opposite directions
-        translateZ = -160;
-        translateY = isAbove ? -30 : 30;
-      } else {
         rotateX = isAbove ? 30 : -30; // Opposite directions
         translateZ = -240;
-        translateY = isAbove ? -45 : 45;
+        translateY = isAbove ? -50 : 50;
+      } else {
+        rotateX = isAbove ? 45 : -45; // Opposite directions
+        translateZ = -360;
+        translateY = isAbove ? -75 : 75;
       }
 
       // Apply transform with GSAP
@@ -298,11 +298,29 @@ document.addEventListener("DOMContentLoaded", () => {
       const rightDetails = project.querySelectorAll(".project-details .line");
       const title = project.querySelector(".project-title");
       const content = project.querySelector(".project-content");
+      const keywords = project.querySelector(".project-keywords");
+      const keywordElements = project.querySelectorAll(".keyword");
 
       // Animate letter spacing back to normal
       gsap.to(title, {
         letterSpacing: "-0.02em",
         duration: 0.3,
+        ease: "projectCollapse"
+      });
+
+      // Hide keywords
+      gsap.to(keywords, {
+        opacity: 0,
+        y: 10,
+        duration: 0.3,
+        ease: "projectCollapse"
+      });
+
+      gsap.to(keywordElements, {
+        opacity: 0,
+        y: 5,
+        duration: 0.2,
+        stagger: 0.05,
         ease: "projectCollapse"
       });
 
@@ -353,11 +371,29 @@ document.addEventListener("DOMContentLoaded", () => {
         const prevRightDetails = activeProject.querySelectorAll(".project-details .line");
         const prevTitle = activeProject.querySelector(".project-title");
         const prevContent = activeProject.querySelector(".project-content");
+        const prevKeywords = activeProject.querySelector(".project-keywords");
+        const prevKeywordElements = activeProject.querySelectorAll(".keyword");
 
         // Animate letter spacing back to normal
         gsap.to(prevTitle, {
           letterSpacing: "-0.02em",
           duration: 0.25,
+          ease: "projectCollapse"
+        });
+
+        // Hide keywords
+        gsap.to(prevKeywords, {
+          opacity: 0,
+          y: 10,
+          duration: 0.25,
+          ease: "projectCollapse"
+        });
+
+        gsap.to(prevKeywordElements, {
+          opacity: 0,
+          y: 5,
+          duration: 0.2,
+          stagger: 0.05,
           ease: "projectCollapse"
         });
 
@@ -418,6 +454,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const rightDetails = project.querySelectorAll(".project-details.right .line");
         const title = project.querySelector(".project-title");
         const content = project.querySelector(".project-content");
+        const keywords = project.querySelector(".project-keywords");
+        const keywordElements = project.querySelectorAll(".keyword");
 
         // Reset positions before animating
         gsap.set(video, {
@@ -437,6 +475,16 @@ document.addEventListener("DOMContentLoaded", () => {
           margin: 0
         });
 
+        gsap.set(keywords, {
+          opacity: 0,
+          y: 10
+        });
+
+        gsap.set(keywordElements, {
+          opacity: 0,
+          y: 5
+        });
+
         // Create timeline for staggered animations
         const tl = gsap.timeline({
           defaults: {
@@ -447,6 +495,14 @@ document.addEventListener("DOMContentLoaded", () => {
         // Animate letter spacing expansion
         tl.to(title, {
           letterSpacing: "0.01em",
+          duration: 0.4,
+          ease: "projectExpand"
+        }, 0);
+
+        // Show keywords
+        tl.to(keywords, {
+          opacity: 1,
+          y: 0,
           duration: 0.4,
           ease: "projectExpand"
         }, 0);
@@ -484,6 +540,15 @@ document.addEventListener("DOMContentLoaded", () => {
           stagger: 0.05,
           ease: "textReveal"
         }, "-=0.4");
+
+        // Animate keywords with stagger
+        tl.to(keywordElements, {
+          opacity: 1,
+          y: 0,
+          duration: 0.3,
+          stagger: 0.1,
+          ease: "textReveal"
+        }, "-=0.3");
 
         // Adjust spacing for better visibility
         const projectIndex = Array.from(projectItems).indexOf(project);
@@ -528,9 +593,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Add click event listeners to all project items
   projectItems.forEach((item) => {
-    item.addEventListener("click", () => {
+    item.addEventListener("click", (e) => {
+      // 영상 영역을 클릭한 경우 이벤트 전파를 막음
+      if (e.target.closest('.video-wrapper') || e.target.closest('iframe')) {
+        e.stopPropagation();
+        return;
+      }
       toggleProject(item);
     });
+  });
+
+  // 영상 영역 클릭 시 시각적 피드백 제공
+  document.addEventListener("click", (e) => {
+    const videoWrapper = e.target.closest('.video-wrapper');
+    if (videoWrapper) {
+      e.stopPropagation();
+      
+      // 클릭 효과 (선택사항)
+      gsap.to(videoWrapper, {
+        scale: 0.98,
+        duration: 0.1,
+        ease: "power2.out",
+        yoyo: true,
+        repeat: 1
+      });
+    }
   });
 
   // Handle window resize

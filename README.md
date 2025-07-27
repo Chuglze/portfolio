@@ -1,6 +1,6 @@
 # 영상 기반 포트폴리오 사이트
 
-이 프로젝트는 RTF 파일의 디자인을 기반으로 한 영상 기반 포트폴리오 웹사이트입니다. 각 프로젝트는 유튜브 비디오로 표시되며, 클릭하면 확장되어 비디오와 상세 정보를 보여줍니다.
+이 프로젝트는 RTF 파일의 디자인을 기반으로 한 영상 기반 포트폴리오 웹사이트입니다. 현재 4개의 프로젝트가 포함되어 있으며, 각 프로젝트는 유튜브 비디오로 표시됩니다. 클릭하면 확장되어 비디오와 상세 정보를 보여줍니다.
 
 ## 주요 기능
 
@@ -64,14 +64,14 @@ npx http-server
 ```html
 <!-- 현재 예시 -->
 <iframe 
-    src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
-    title="Essential light video"
+    src="https://www.youtube.com/embed/TuVR-PF1tyk" 
+    title="UINPULSE video"
     frameborder="0" 
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
     allowfullscreen>
 </iframe>
 
-<!-- 변경하려면 dQw4w9WgXcQ 부분을 원하는 유튜브 비디오 ID로 교체 -->
+<!-- 변경하려면 TuVR-PF1tyk 부분을 원하는 유튜브 비디오 ID로 교체 -->
 <iframe 
     src="https://www.youtube.com/embed/YOUR_VIDEO_ID" 
     title="Your video title"
@@ -80,6 +80,11 @@ npx http-server
     allowfullscreen>
 </iframe>
 ```
+
+**유튜브 링크 변환 방법:**
+- 원본 링크: `https://youtu.be/TuVR-PF1tyk`
+- 임베드 링크: `https://www.youtube.com/embed/TuVR-PF1tyk`
+- 비디오 ID: `TuVR-PF1tyk` (youtu.be/ 뒤의 부분)
 
 ### 4. 프로젝트 정보 수정
 
@@ -99,6 +104,16 @@ npx http-server
     <p class="detail-year">/2024</p>
 </div>
 ```
+
+### 5. 프로젝트 추가/제거
+
+현재 4개의 프로젝트가 활성화되어 있습니다. 새로운 프로젝트를 추가하려면:
+
+1. `index.html`에서 새로운 프로젝트 아이템을 추가
+2. `data-index` 속성을 순차적으로 설정 (0, 1, 2, 3, 4, 5...)
+3. 유튜브 비디오 링크와 프로젝트 정보 설정
+
+프로젝트를 비활성화하려면 해당 HTML 블록을 주석 처리하거나 제거하세요.
 
 ## 기술 스택
 
