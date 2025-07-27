@@ -1,0 +1,107 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+body {
+  font-family: "PP Neue Montreal", sans-serif;
+  background-color: #f5f3ee;
+  color: #000;
+}
+
+.start-container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.title-image-container {
+  position: relative;
+  z-index: 10;
+}
+
+.title-image {
+  width: 400px;
+  height: 300px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.title-image:hover {
+  transform: scale(1.02);
+}
+
+.image-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #e0e0e0 0%, #f0f0f0 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed #ccc;
+}
+
+.placeholder-text {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #999;
+  letter-spacing: 0.1em;
+}
+
+/* 실제 이미지를 사용할 때는 아래 스타일을 사용하세요 */
+/*
+.title-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+*/
+
+/* 페이지 전환 효과 */
+.page-transition {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #f5f3ee;
+  z-index: 1000;
+  transform: scaleY(0);
+  transform-origin: bottom;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .title-image {
+    width: 300px;
+    height: 225px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title-image {
+    width: 250px;
+    height: 187px;
+  }
+  
+  .placeholder-text {
+    font-size: 1rem;
+  }
+} 
